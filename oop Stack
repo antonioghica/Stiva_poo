@@ -1,0 +1,37 @@
+class Stiva {
+private:
+    vector<int> p;
+    vector<int> maxValues; 
+public:
+    void Push(int x) {
+        p.push_back(x);
+        if (maxValues.empty() || x >= maxValues.back()) {
+            maxValues.push_back(x);
+        }
+    }
+
+    void Pop() {
+        if (!p.empty()) {
+            if (p.back() == maxValues.back()) {
+                maxValues.pop_back();
+            }
+            p.pop_back();
+        }
+    }
+
+    int Top() {
+        if (!p.empty())
+            return p.back();
+        return -1;
+    }
+
+    int Max() {
+        if (!maxValues.empty())
+            return maxValues.back();
+        return -1;
+    }
+
+    int Empty() {
+        return p.empty();
+    }
+};
